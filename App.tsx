@@ -53,7 +53,9 @@ export default function App() {
 
   const markDone = (task: Task) => {
     const tmp = [...tasks];
-    const index = tmp.findIndex(el => el.title === task.title);
+    const index = tmp.findIndex(
+      el => el.title === task.title && el.date === task.date,
+    );
     const todo = tasks[index];
     todo.done = !todo.done;
     setTasks(tmp);

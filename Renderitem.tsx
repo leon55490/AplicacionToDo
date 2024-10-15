@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import styles from './Styles';
 import {Task} from './App';
 
@@ -26,7 +26,12 @@ export default function RenderItem({
       </TouchableOpacity>
       {item.done && (
         <TouchableOpacity
-          onPress={() => deleteFunction(item)}
+          onPress={() =>
+            Alert.alert('Alerta', '¿Seguro que quieres eliminar la tarea?', [
+              {text: 'Si', onPress: () => deleteFunction(item)},
+              {text: 'No'},
+            ])
+          }
           style={styles.removeButton}>
           <Text style={styles.whiteText}>Eliminar</Text>
         </TouchableOpacity>
